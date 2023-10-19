@@ -21,3 +21,4 @@ Route::get('/', function () {
 Route::get('vacants/allVacants', [VacantController::class, 'vacants'])->name('vacants.allVacants');
 Route::get('vacants/createVacant', [VacantController::class, 'createVacant'])->name('vacants.createVacant');
 Route::post('vacants/saveVacant', [VacantController::class, 'saveVacant'])->name('vacants.saveVacant');
+Route::get('vacants/viewVacant/{id}', [VacantController::class, 'viewVacant'])->name('vacants.viewVacant');

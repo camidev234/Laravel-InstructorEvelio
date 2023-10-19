@@ -27,7 +27,7 @@
                             <td>{{ $vacant->vacant_code }}</td>
                             <td>{{ $vacant->Job }}</td>
                             <td>
-                                <a href="#" class="btn btn-primary">Ver</a>
+                                <a href="{{ route('vacants.viewVacant', ['id' => $vacant->id]) }}" class="btn btn-primary">Ver</a>
                                 <form action="" method="post" class="d-inline">
                                     <button type="submit" class="btn btn-danger">Eliminar</button>
                                 </form>

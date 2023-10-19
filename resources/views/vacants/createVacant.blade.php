@@ -28,7 +28,8 @@
             </div>
             <div class="form-group">
                 <label for="salary">Salario:</label>
-                <input type="text" class="form-control" name="salary" id="salary">
+                <input type="text" class="form-control" name="salary" id="salary" value="$" oninput="addDollarSign(this)">
+
             </div>
             <div class="form-group">
                 <label for="places_available">Plazas disponibles:</label>
@@ -47,6 +48,15 @@
             <button type="submit" class="btn btn-primary">Crear</button>
         </form>
     </div>
+
+
+    <script>
+function addDollarSign(input) {
+    if (!input.value.startsWith("$")) {
+        input.value = "$" + input.value;
+    }
+}
+</script>
 
 </body>
 </html>

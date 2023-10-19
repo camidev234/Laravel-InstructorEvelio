@@ -10,7 +10,7 @@ class VacantController extends Controller
     //
 
     public function vacants() {
-        $vacants = Vacant::join('jobs', 'vacants.job_id', '=', 'jobs.id')->select('vacants.vacant_code', 'jobs.Job')->get();
+        $vacants = Vacant::join('jobs', 'vacants.job_id', '=', 'jobs.id')->select('vacants.*', 'jobs.Job',)->get();
         return view('/vacants/indexVacant', [
             'allVacants' => $vacants
         ]);
@@ -37,6 +37,14 @@ class VacantController extends Controller
         $newVacant->save();
 
         return redirect()->route('vacants.allVacants');
+    }
+
+    public function viewVacant($id){
+        $vacant = Vacant::join('jobs', 'vacants.job_id', '=', 'jobs.id')->select('vacants.*', 'jobs.Job',)->where('vacants.id', $id)->first();
+
+        return view('/vacants/viewVacantInfo', [
+            'vacant' => $vacant
+        ]);
     }
 
 }
