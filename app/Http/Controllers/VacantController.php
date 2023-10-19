@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vacant;
+use App\Models\Job;
 class VacantController extends Controller
 {
     //
@@ -15,5 +16,27 @@ class VacantController extends Controller
         ]);
     }
 
+    public function createVacant() {
+        $allJobs = Job::all();
+        return view('/vacants/createVacant', [
+            'allJobs' => $allJobs
+        ]);
+    }
+
+    public function saveVacant(Request $inputs){
+        $newVacant = new Vacant();
+
+        $newVacant->vacant_code = $inputs->vacant_code;
+        $newVacant->job_id = $inputs->job_id;
+        $newVacant->skills = $inputs->skills;
+        $newVacant->competencies = $inputs->competencies;
+        $newVacant->expertise_required = $inputs->expertise_required;
+        $newVacant->salary = $inputs->salary;
+        $newVacant->places_available = $inputs->places_available;
+
+        $newVacant->save();
+
+        return redirect()->route('vacants.allVacants');
+    }
 
 }
