@@ -12,28 +12,51 @@
             @csrf
             <div class="form-group">
                 <label for="vacant_code">Código:</label>
-                <input type="text" class="form-control" name="vacant_code" id="vacant_code">
+                <input type="text" class="form-control" name="vacant_code" id="vacant_code" value="{{ old('vacant_code') }}">
+                @error('vacant_code')
+                    <br>
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="skills">Habilidades:</label>
-                <textarea class="form-control" name="skills" id="skills" rows="4"></textarea>
+                <textarea class="form-control" name="skills" id="skills" rows="4">{{ old('skills') }}</textarea>
+                @error('skills')
+                <br>
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="competencies">Competencias:</label>
-                <textarea class="form-control" name="competencies" id="competencies" rows="4"></textarea>
+                <textarea class="form-control" name="competencies" id="competencies" rows="4"> {{ old('competencies') }}</textarea>
+                @error('competencies')
+                    <br>
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="expertise_required">Experiencia requerida:</label>
-                <input type="text" class="form-control" name="expertise_required" id="expertise_required">
+                <input type="text" class="form-control" name="expertise_required" id="expertise_required" value="{{ old('expertise_required') }}">
+                @error('expertise_required')
+                    <br>
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="salary">Salario:</label>
-                <input type="text" class="form-control" name="salary" id="salary" value="$" oninput="addDollarSign(this)">
-
+                <input type="text" class="form-control" name="salary" id="salary" value="{{ old('salary') }}" oninput="addDollarSign(this)">
+                @error('salary')
+                    <br>
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="places_available">Plazas disponibles:</label>
-                <input type="text" class="form-control" name="places_available" id="places_available">
+                <input type="text" class="form-control" name="places_available" id="places_available" value="{{ old('places_available') }}">
+                @error('places_available')
+                    <br>
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="job_id">Cargo:</label>
@@ -51,11 +74,7 @@
 
 
     <script>
-function addDollarSign(input) {
-    if (!input.value.startsWith("$")) {
-        input.value = "$" + input.value;
-    }
-}
+
 </script>
 
 </body>

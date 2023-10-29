@@ -12,6 +12,12 @@
             <h1>Vacantes</h1>
         </div>
 
+        @if(session('success'))
+        <div class="alert alert-success message" style="display: none;">
+            {{ session('success') }}
+        </div>
+        @endif
+
         <div class="viewVacants mt-4">
             <table class="table">
                 <thead>
@@ -28,7 +34,7 @@
                             <td>{{ $vacant->Job }}</td>
                             <td>
                                 <a href="{{ route('vacants.viewVacant', ['id' => $vacant->id]) }}" class="btn btn-primary">Ver</a>
-                                <form action="" method="post" class="d-inline">
+                                <form action="{{ route('vacants.deleteVacant', ['id' => $vacant->id]) }}" method="get" class="d-inline">
                                     <button type="submit" class="btn btn-danger">Eliminar</button>
                                 </form>
                             </td>
@@ -46,6 +52,22 @@
             <a href="{{ route('vacants.createVacant') }}" class="btn btn-success">Crear nueva vacante</a>
         </div>
     </div>
+
+
+    <script>
+        // this function is exexcuting when the page is loaded
+    document.addEventListener('DOMContentLoaded', function () {
+        let message = document.querySelector('.message');
+        if (message) {
+            message.style.display = 'block';
+            // usign setTimeout to hide the message after 2 seconds
+            setTimeout(function () {
+                // the message has display none after 2 seconds
+                message.style.display = 'none';
+            }, 2000);
+        }
+    });
+    </script>
 
 </body>
 </html>
